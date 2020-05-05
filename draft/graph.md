@@ -1,1 +1,1 @@
-https://www.yworks.com/yed-live/?file=https://gist.githubusercontent.com/Penguint/a34f4d28abbbc967df0f11a1c47055c4/raw/d10f511c40a83a1c8383aa057bd9bfa6f2eccf5c/Untitled%20Document
+https://www.yworks.com/yed-live/?file=https://gist.githubusercontent.com/Penguint/00051aadb5414cb9eddaedd65a426c9d/raw/8e95a710d4af5a5678feeea94c3bce15a0c09a40/Untitled%20Document
