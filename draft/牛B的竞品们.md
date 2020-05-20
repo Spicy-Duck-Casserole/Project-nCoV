@@ -31,3 +31,4 @@
   - ![](Annotation%202020-05-17%20212334.png)
 - [肺炎疫情实时省市地图 | 山月](https://ncov.shanyue.tech/)
 - [中国CDC](http://2019ncov.chinacdc.cn/2019-nCoV/)
+- [amCharts](https://www.amcharts.com/demos/corona-virus-animated-dashboard/)
