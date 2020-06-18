@@ -7,21 +7,69 @@
 </head>
 
 <body>
-    <div id="barchart">
 
-    </div>
-
-    <div id="piechart">
-
-    </div>
+    <div id="map"></div>
+    <div id="global_active_cases_line"></div>
+    <div id="linechart2"></div>
+    <div id="USlinechart"></div>
+    <div id="BRAZILlinechart"></div>
+    <div id="RUSSIAlinechart"></div>
+    <div id="INDIAlinechart"></div>
+    <div id="UKlinechart"></div>
 
     <script src="./d3.js"></script>
-    
-    <script type="" src="./China_Mainland_Daily.js"></script>
-    <script type="" src="./barchart.js"></script>
 
+    <script src="./legend.js"></script>
+
+    <script type="" src="./top.js"></script>
+    <script type="" src="./csvToJson.js"></script>
+    <script type="" src="./China_Mainland_Daily.js"></script>
     <script type="" src="./getNewlyConfirmAndDeath.js"></script>
-    <script type="" src="./piechart.js"></script>
+    <script src="https://d3js.org/topojson.v2.min.js"></script>
+    <script type="" src="./linechart.js"></script>
+    <script type="" src="./map.js"></script>
+
+
+
+
+    <script>
+
+        map({
+            containerQuery: "#map",
+            dataSource: DeathsAVGAll,
+            title: 'Confirmed Cases',
+            colorScheme: d3.interpolatePurples,
+            // legendTick: [10, 100, 1000, 10000, 100000, 1000000],
+            width: 1100
+        });
+
+        linechart({
+            containerQuery: '#global_active_cases_line',
+            dataSource: Top10,
+            title: 'Global Active Cases',
+            colorScheme: ['#FEE89F', '#D7A19B', '#BED6AD', '#FFC0CB', '#FF00FF', '#6A5ACD', '#008080', '#DC143C', '#FF8C00', '#000000', 'grey'],
+            margin: ({ top: 10, right: 50, bottom: 40, left: 30 }),
+            scaleType: 'log',
+            width: 1080,
+            height: 600
+        })
+        // linechart({
+        //     containerQuery: '#linechart',
+        //     dataSource: Top10,
+        //     title: 'Global Active Cases',
+        //     colorScheme: ['#FEE89F', '#D7A19B', '#BED6AD', '#FFC0CB', '#FF00FF', '#6A5ACD', '#008080', '#DC143C', '#FF8C00', '#000000', 'grey'],
+        //     margin: ({ top: 10, right: 50, bottom: 40, left: 30 }),
+        //     scaleType: 'log'
+        // })
+        // linechart({
+        //     containerQuery: '#linechart2',
+        //     dataSource: Top10,
+        //     title: 'Global Active Cases 2',
+        //     colorScheme: ['#FEE89F', '#D7A19B', '#BED6AD', '#FFC0CB', '#FF00FF', '#6A5ACD', '#008080', '#DC143C', '#FF8C00', '#000000', 'grey'],
+        //     margin: ({ top: 10, right: 50, bottom: 40, left: 30 }),
+        //     scaleType: 'linear'
+        // })
+    </script>
 </body>
 
 </html>

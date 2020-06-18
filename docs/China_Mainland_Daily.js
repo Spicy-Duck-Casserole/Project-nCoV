@@ -1,4 +1,3 @@
-
 async function Common(URL,CountryName){	
 	var json = [];
 	var Country = new Array();
@@ -34,8 +33,7 @@ async function Common(URL,CountryName){
 						}
 						json[0][attr] += Number(row[attr]);
 					}
-				}
-				
+				}				
 			}
 		}			
 	})
@@ -56,9 +54,10 @@ async function CountryAll(CountryName){
 	var result = []
 	for (index in Confirmed) {
 		result.push({
-			total: Confirmed[index],
+			confirmed: Confirmed[index],
 			death: death[index],
-			recovered: recover[index],
+			recover: recover[index],
+			active: Confirmed[index]-death[index]-recover[index],
 			date: index
 		})
 	}

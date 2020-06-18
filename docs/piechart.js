@@ -1,37 +1,40 @@
-async function run() {
+async function piechart({
+    containerQuery,
+    dataSource,
+    title = "",
+    titleColor,
+    colorScheme,
+    width = 800,
+    height = 400,
+}) {
 
-    pie = d3.pie()
+    const pie = d3.pie()
         .sort(null)
         .value(d => d.value)
 
-    width = 800
-    height = 400
+    const margin = ({ top: 10, right: 10, bottom: 50, left: 10 })
 
-    margin = ({ top: 10, right: 10, bottom: 50, left: 10 })
+    const radius = Math.min(width - margin.left - margin.right, height - margin.top - margin.bottom) / 2
 
-    radius = Math.min(width - margin.left - margin.right, height - margin.top - margin.bottom) / 2
+    const tagMargin = 50
 
-    tagMargin = 10
+    const tagInterval = 70
 
-    tagInterval = 50
+    const textLength = 150
 
-    textLength = 100
-
-    arc = d3.arc()
+    const arc = d3.arc()
         .innerRadius(0)
         .outerRadius(radius)
 
-    arcLabel = d3.arc()
+    const arcLabel = d3.arc()
         .innerRadius(radius * 0.95)
         .outerRadius(radius * 0.95);
 
-    arcNumber = d3.arc()
+    const arcNumber = d3.arc()
         .innerRadius(radius * 0.618)
         .outerRadius(radius * 0.618)
 
-    data = await ConfirmAll()
-
-    title = "Total Cases"
+    const data = await dataSource()
 
 
     sortBox = function (arr) {
@@ -54,7 +57,7 @@ async function run() {
     }
 
     // Adjust values distributed in a rage with a least interval
-    adjustInterval = ({ domain, range, interval, step = 1 }) => {
+    const adjustInterval = ({ domain, range, interval, step = 1 }) => {
         var temp = (new sortBox(domain)).sort((a, b) => a - b)
 
         var [...result] = temp.get()
@@ -89,22 +92,21 @@ async function run() {
         return temp.set(result).unsort().get()
     }
 
-    color = d3.scaleOrdinal()
+    const color = d3.scaleOrdinal()
         .domain(data.map(d => d.name))
-        .range(d3.quantize(t => d3.interpolateSpectral(t * 0.8 + 0.1), data.length).reverse())
+        .range(d3.quantize(colorScheme, data.length).reverse())
 
-    console.log(data);
 
-    slicesGreatestN = n => pie(data)
+    const slicesGreatestN = n => pie(data)
         .sort((a, b) => b.value - a.value)
         .map((d, i) => { d.rank = i; return d; })
         .sort((a, b) => a.index - b.index)
         .filter(d => d.rank < n);
 
-    right = d => arcLabel.centroid(d)[0] >= 0;
-    left = d => arcLabel.centroid(d)[0] < 0;
+    const right = d => arcLabel.centroid(d)[0] >= 0;
+    const left = d => arcLabel.centroid(d)[0] < 0;
 
-    slicesSideLimit = limit => slicesGreatestN(function () {
+    const slicesSideLimit = limit => slicesGreatestN(function () {
         for (var i = 0; i < slices.length; i++) {
             const center = slicesGreatestN(i)
 
@@ -121,7 +123,7 @@ async function run() {
 
     const slicesLabel = slicesSideLimit(7)
 
-    const svg = d3.select('#piechart')
+    const svg = d3.select(containerQuery)
         .append("svg")
         .attr("width", width)
         .attr("height", height)
@@ -145,12 +147,12 @@ async function run() {
         .attr("r", 3)
         .attr("transform", d => `translate(${arcLabel.centroid(d)})`)
 
-    endPointRight = adjustInterval({
+    const endPointRight = adjustInterval({
         domain: slicesLabel.filter(right).map(d => arcLabel.centroid(d)[1]),
-        range: [-height / 2 + tagInterval / 2, height / 2 - tagInterval / 2],
+        range: [-height / 2 + tagInterval, height / 2 - tagInterval],
         interval: tagInterval
     })
-    endPointLeft = adjustInterval({
+    const endPointLeft = adjustInterval({
         domain: slicesLabel.filter(left).map(d => arcLabel.centroid(d)[1]),
         range: [-height / 2 + tagInterval / 2, height / 2 - tagInterval / 2],
         interval: tagInterval
@@ -249,7 +251,7 @@ async function run() {
         .attr("stroke", "white")
         .attr("text-anchor", "middle")
         .selectAll("text")
-        .data(slicesGreatestN(3))
+        .data(slicesGreatestN(5))
         .join("text")
         .attr("transform", d => `translate(${arcNumber.centroid(d)})`)
         .call(text => text.filter(d => (d.endAngle - d.startAngle) > 0.25).append("tspan")
@@ -259,8 +261,8 @@ async function run() {
             .text(d => d.data.value.toLocaleString()));
 
     svg.append('text')
-        .attr("stroke", "rgb(162, 217, 163)")
-        .attr("fill", "rgb(162, 217, 163)")
+        .attr("stroke", titleColor)
+        .attr("fill", titleColor)
         .attr("font-size", 25)
         .attr("x", 0)
         .attr("y", `${radius + 15}`)
@@ -269,5 +271,3 @@ async function run() {
         .text(title)
 
 }
-
-run()

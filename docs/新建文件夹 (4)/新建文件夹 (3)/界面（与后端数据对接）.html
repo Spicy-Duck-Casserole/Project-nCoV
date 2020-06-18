@@ -1,0 +1,454 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>疫情数据实时轮播展示</title>
+	<link rel="stylesheet" href="../package/css/swiper.min.css">
+	<link rel="stylesheet" href="../package/bootstrap-4.5.0-dist/css/bootstrap.css">
+	<link rel="shortcut icon" href="..\img\logo.PNG"/><!--icon-->
+	<link rel="bookmark" href= "..\img\logo.PNG" /><!--icon-->
+<style>
+::-webkit-scrollbar
+{
+    width: 9px;
+    height: 16px;
+    background-color: transparent;
+}
+
+::-webkit-scrollbar-track
+{
+
+    border-radius: 10px;
+    background-color: transparent;
+}
+
+::-webkit-scrollbar-thumb
+{
+    border-radius: 10px;
+    background-color: #50a8ff;
+}
+	.swiper-container {
+      width: 100%;
+      height: 100%;
+    }
+    .swiper-slide {
+      text-align: center;
+      font-size: 18px;
+
+      /* Center slide text vertically */
+    
+    }
+	.logo{
+  	/**background-image: url("IMG_2063.png");**/
+  	position: absolute;
+  	left: 39px;
+  	top: 5px;
+  	width: 149px;
+  	height: 137px;
+ 	 z-index: 161;		
+	}
+	.title{
+	font-size: 100px;
+  	font-family: "OPPOSans";
+  	color: rgb(255, 255, 255);
+  	font-weight: bold;
+  	line-height: 1.057;
+  	position: absolute;
+ 	left: 250px;
+ 	top: 19px;
+  	z-index: 4;		
+	}
+	.title_slogan{
+	font-size: 45px;
+  	font-family: "OPPOSans";
+  	color: rgb(255, 255, 255);
+  	font-weight: bold;
+  	line-height: 1.644;
+  	position: absolute;
+  	left: 862.922px;
+  	top: 0px;
+  	z-index: 162;		
+	}
+	.body-div{
+	border-radius: 15px;
+  	background-color: rgb(255, 255, 253);
+  	opacity: 0.71;
+  	box-shadow: 0px 9px 1.42px 0.58px rgba(0, 0, 0, 0.26);
+  	position: absolute;
+  	left: 10px;
+  	top: 140px;
+  	width: 1147px;
+  	height: 664px;
+  	z-index: 147;
+	}
+	.bottom-div{
+	border-radius: 15px;
+  	background-color: rgb(255, 255, 253);
+  	opacity: 0.71;
+  	box-shadow: 0px 9px 1.42px 0.58px rgba(0, 0, 0, 0.26);
+  	position: absolute;
+  	left: 11px;
+  	top: 850px;
+  	width: 1147px;
+  	height: 177px;
+  	z-index: 148;		
+	}
+	.bottom-div-title1{
+	font-size: 48px;
+  	font-family: "OPPOSans";
+  	color: rgb(12, 86, 71);	
+  	line-height: 3.104;
+  	position: absolute;
+  	left: 20px;
+  	top: -40px;
+ 	z-index: 150;		
+	}
+	.bottom-div-title2{
+	font-size: 48px;
+  	font-family: "OPPOSans";
+  	color: rgb(12, 86, 71);	
+  	line-height: 3.104;
+  	position: absolute;
+  	left: 420px;
+  	top: -40px;
+ 	z-index: 150;		
+	}
+	.bottom-div-title3{
+	font-size: 48px;
+  	font-family: "OPPOSans";
+  	color: rgb(12, 86, 71);	
+  	line-height: 3.104;
+  	position: absolute;
+  	left: 820px;
+  	top: -40px;
+ 	z-index: 150;		
+	}
+	.bottom-div-title4{
+	font-size: 30px;
+  	font-family: "OPPOSans";
+  	color: rgb(255, 174, 0);
+  	line-height: 2.483;
+  	position: absolute;
+  	left: 50px;
+  	top: 70px;
+  	z-index: 153;		
+	}
+	.bottom-div-title5{
+	font-size: 30px;
+  	font-family: "OPPOSans";
+  	color: rgb(255, 0, 0);
+  	line-height: 2.483;
+  	position: absolute;
+  	left: 450px;
+  	top: 70px;
+  	z-index: 153;		
+	}
+	.bottom-div-title6{
+	font-size: 30px;
+  	font-family: "OPPOSans";
+  	color: rgb(12, 86, 71);
+  	line-height: 2.483;
+  	position: absolute;
+  	left: 880px;
+  	top: 70px;
+  	z-index: 153;		
+	}
+	.right-left-title{
+	font-size: 31px;
+  	font-family: "OPPOSans";
+  	color: rgb(0, 110, 83);
+  	font-weight: bold;
+	}
+	.right_left{
+		max-width: 540px;
+		border-color: #009EA1;
+		border-radius: 15px;
+		opacity: 1
+	}
+	.card-img-1{
+		border-radius: 50px;
+
+	}
+	.card-img-bottom-1{
+		height:125px;
+		border-radius: 15px;
+		border-bottom-left-radius: 15px;
+		padding:5px;
+	}
+
+	</style>
+	<script type="text/javascript" src="jquery-3.3.1.js"></script>
+	<script type="text/javascript" src="d3.js"></script>
+  	<script type="text/javascript" src="csvToJson.js"></script>
+
+</head>
+
+<body style="background-color:#2a947f;">
+<div style="width: 61.8%; float: left;height: 1000px;border-width:none" >
+
+	<div name="logo" style="height: 15%"><!--logo行-->
+		<img alt="logo" src="..\img\logo.PNG" class="logo">
+		<p class="title">COVID-19</p>
+		<p class="title_slogan">疫情数据轮播<br>实时地图展示</p>	
+	</div>
+	<div name="rollerpage" style="background-color: #ffffff" class="body-div swiper-container " id="swipercontainer3">
+	<!--轮播主体加js部分-->	
+		<div class="swiper-wrapper" id="body">
+			<script type="text/javascript">
+				async function run(){
+					for(int i=0;i<5;i++){
+						var framDiv1 = document.createElement("div");
+						var divFa1 = document.getElementById("xxxx");    
+						divFa1.appendChild(framDiv1);    
+						framDiv1.setAttribute("id","div1");    
+						framDiv1.className="swiper-slide";    
+						framDiv1.style.height="多少px";
+					}
+				}
+			run();
+			</script>
+		
+		
+		</div>	
+	</div>
+	<div name="sumsUp" style="background-color:#ffffff； padding=none" class="bottom-div">
+	<!--底部的大数据展示-->
+		<p class="bottom-div-title1">全球总感染数</p>
+		<p class="bottom-div-title2">全球总死亡数</p>
+		<p class="bottom-div-title3">全球总治愈数</p>
+		<p class="bottom-div-title4">XXXXXXXXXXX</p>
+		<p class="bottom-div-title5">XXXXXXXXXXX</p>
+		<p class="bottom-div-title6">xxxxxxxxxxx</p>
+	
+	</div>
+</div>
+<div style="width: 38.2% ;float: left;height: 1080px">
+
+<!-- 该块用于展示感染人数最多的五个国家及其感染，死亡，治愈变化折线图-->
+	<div style="width: 49%;height: 1080px;float: left;padding: 5px" >
+	<div class="swiper-container" id="swipercontainer1" style="height: 1080px">
+		<div class="swiper-wrapper" id="topfive">
+		  <!--以下为例，name为flag的img标签用于安放国旗，其id应为所标志国家国际域名缩写+flag1 card-img-bottom处为安放变化图的占位，可替换为canvas，css仍然可用-->
+		<script type="text/javascript">
+  	//根据json数组动态生成div
+  	async function run(){
+		
+	
+		var NowDayAll = await nowDay();
+
+
+		var sample2 = "https://static.runoob.com/images/mix/img_avatar.png";
+		for(var i = 0;i < 5; i++){
+
+			//var iSO = NowDayAll[i].iso2;
+			var sample1 = "../img/Flags/"+NowDayAll[i].iso2+".svg";
+			var confirmed = NowDayAll[i].Confirmed;
+
+			var framDiv1 = document.createElement("div");
+			var divFa1 = document.getElementById("topfive");
+			divFa1.appendChild(framDiv1);
+			framDiv1.setAttribute("id","div1");
+			framDiv1.className="swiper-slide";
+			framDiv1.style.height="200px";
+			framDiv1.style.marginBottom="20px";
+
+			var framDiv2 = document.createElement("div");
+			framDiv1.appendChild(framDiv2);
+			framDiv2.setAttribute("id","div2");
+			framDiv2.className="card shadow-sm mb-3  right_left  ";
+
+
+			var framDiv3 = document.createElement("div");
+			framDiv2.appendChild(framDiv3);
+			framDiv3.setAttribute("id","div3");
+			framDiv3.setAttribute("style","height:70px");
+			framDiv3.className="row no-gutters";
+
+			var framDiv40 = document.createElement("div");
+			framDiv3.appendChild(framDiv40);
+			framDiv40.setAttribute("id","div40");
+			framDiv40.className="col-md-4";
+
+			var framImg1 = document.createElement("img");
+			framDiv40.appendChild(framImg1);
+			framImg1.src=sample1;
+			framImg1.className="card-img  card-img-1";
+			framImg1.alt="...";
+			framImg1.setAttribute("id","img1");
+			framImg1.setAttribute("style","padding:10px")
+
+			var framDiv41 = document.createElement("div");
+			framDiv3.appendChild(framDiv41);
+			framDiv41.setAttribute("id","div41");
+			framDiv41.className="col-md-8";
+
+			var framDiv5 = document.createElement("div");
+			framDiv41.appendChild(framDiv5);
+			framDiv5.setAttribute("id","div5");
+			framDiv5.className="card-body";
+
+			var framP = document.createElement("p");
+			framDiv5.appendChild(framP);
+			framP.className="card-text small text-left";
+			framP.innerHTML=NowDayAll[i].Country_Region+":";
+
+			var framText = document.createElement("p");
+			framP.appendChild(framText);
+			framText.className="text-danger";
+			framText.innerHTML="感染人数："+confirmed;
+
+			var framImg2 = document.createElement("img");
+			framDiv2.appendChild(framImg2);
+			framImg2.src=sample2;
+			framImg2.className="card-img-bottom  card-img-bottom-1";
+			framImg2.alt="Card image";
+			framImg2.setAttribute("id","img2");
+
+			}
+	}
+  run();
+  </script>
+
+
+
+		 		
+		 		
+		</div>
+	</div>
+	</div>
+	<div style="width: 49%;height: 1000px;float: left;border-width: none" >
+		<div class="swiper-container" id="swipercontainer2" style="height: 1080px">
+		<div class="swiper-wrapper" id="rotationpart">
+		 
+		
+		<script type="text/javascript">
+  	//根据json数组动态生成右部div
+  	async function right_run(){
+		var NowDayAll = await nowDay(); 
+		for(var i = 5;i < NowDayAll.length; i++){
+			if(NowDayAll[i].iso2 === "" || NowDayAll[i].Country_Region === "Saint Vincent and the Grenadines" || NowDayAll[i].Country_Region === "Taiwan*"){
+				continue;
+			}
+			//var iSO1 = NowDayAll[i].iso2;
+			console.log(NowDayAll[i].iso2);
+			var sampleA = "../img/Flags/"+NowDayAll[i].iso2+".svg";
+			var confirmed1 = NowDayAll[i].Confirmed;
+
+			var framDivA = document.createElement("div");
+			var divFaA = document.getElementById("rotationpart");
+			divFaA.appendChild(framDivA);
+			framDivA.setAttribute("id","divA");
+			framDivA.className="swiper-slide";
+
+
+			var framDivB = document.createElement("div");
+			framDivA.appendChild(framDivB);
+			framDivB.setAttribute("id","framDivB");
+			framDivB.setAttribute("style","height:70px")
+			framDivB.className="card shadow-sm mb-3  right_left  ";
+
+
+			var framDivC = document.createElement("div");
+			framDivB.appendChild(framDivC);
+			framDivC.setAttribute("id","divC");
+			
+			framDivC.className="row no-gutters";
+
+			var framDivD0 = document.createElement("div");
+			framDivC.appendChild(framDivD0);
+			framDivD0.setAttribute("id","divD0");
+			framDivD0.className="col-md-4";
+
+			var framImgA = document.createElement("img");
+			framDivD0.appendChild(framImgA);
+			framImgA.src=sampleA;
+			framImgA.className="card-img1";
+			framImgA.setAttribute("style","padding:10px 2px 2px 2px")
+			framImgA.alt="...";
+			framImgA.setAttribute("id","imgA");
+
+			var framDivD1 = document.createElement("div");
+			framDivC.appendChild(framDivD1);
+			framDivD1.setAttribute("id","divD1");
+			framDivD1.className="col-md-8";
+
+			var framDivE = document.createElement("div");
+			framDivE.setAttribute("style","height:100px")
+			framDivD1.appendChild(framDivE);
+			framDivE.setAttribute("id","divE");
+			framDivE.className="card-body";
+
+			var framPA = document.createElement("p");
+			framDivE.appendChild(framPA);
+			framPA.className="card-text small text-left";
+			framPA.innerHTML=NowDayAll[i].Country_Region+":";
+			
+
+			var framTextA = document.createElement("p");
+			framPA.appendChild(framTextA);
+			framTextA.className="text-danger";
+			framTextA.innerHTML="感染人数："+confirmed1;
+		}
+		rr()
+  	}
+  right_run();
+  </script>
+
+
+		</div>
+		</div>
+	</div>
+</div>
+  <script src="../package/bootstrap-4.5.0-dist/js/bootstrap.js"></script>
+  <!-- Swiper JS -->
+  <script src="../package/js/swiper.min.js"></script>
+
+  <!-- Initialize Swiper -->
+  <script>
+    function rr() {
+		var swiper = new Swiper('#swipercontainer2', {
+		  direction: 'vertical',
+		  slidesPerView: 13,
+		  spaceBetween: 5,
+		  freeMode: true,
+		  loop: true,
+		  autoplay: {
+			delay: 1000,
+			disableOnInteraction: false,
+		  },
+		  pagination: {
+			el: '.swiper-pagination',
+			clickable: true,
+		  },
+		});
+		var swiper = new Swiper('#swipercontainer1', {
+		  direction: 'vertical',
+		  slidesPerView: '5',
+		  spaceBetween: 5,
+
+		  pagination: {
+			el: '.swiper-pagination',
+			clickable: true,
+		  },
+		});
+		
+		var swiper = new Swiper('#swipercontainer3', {      
+			slidesPerView: 1,    
+			spaceBetween: 5,    
+			loop: true,    
+			autoplay: {    
+				delay: 60000,    
+				disableOnInteraction: false,    
+			},    
+			pagination: {    
+				el: '.swiper-pagination',    
+				clickable: true,    
+			},   
+		});
+		
+	}
+	  
+  </script>
+
+</body>
+</html>

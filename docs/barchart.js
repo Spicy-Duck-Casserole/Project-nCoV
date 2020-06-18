@@ -1,47 +1,17 @@
-async function run() {
-
-    data = await CountryAll('China')
-
+async function barchart({
+    containerQuery,
+    dataSource,
+    country,
+    title = "",
+    colorMap,
+    width = 800,
+    height = 400,
     margin = ({ top: 10, right: 40, bottom: 40, left: 30 })
+}) {
 
-    width = 800
-    height = 400
+    const data = await dataSource(country)
 
-    color = d3.scaleOrdinal(
-        ["active", "deaths", "recovered"],
-        ['#FEE89F', '#D7A19B', '#BED6AD', 'grey'])
-
-
-    legend = ({
-        g,
-        x = 0,
-        y = 0,
-        iconWidth = 12,
-        iconHeight = 12,
-        intervalX = 70,
-        intervalY = 0,
-        fontSize = 10,
-        format = x => x
-    }) => {
-        item = g.selectAll('g')
-            .data(color.domain())
-            .join('g')
-
-        item.append('rect')
-            .attr("fill", d => color(d))
-            .attr("x", (d, i) => x + i * intervalX)
-            .attr("y", (d, i) => y + i * intervalY)
-            .attr("width", iconWidth)
-            .attr("height", iconHeight)
-
-        item.append("text")
-            .attr("class", "title")
-            .attr("x", (d, i) => x + i * intervalX + iconWidth + 3)
-            .attr("y", (d, i) => y + i * intervalY)
-            .attr("dy", "1em")
-            .attr("font-size", `${fontSize}`)
-            .text(d => format(d))
-    }
+    const color = colorMap
 
     xAxis = g => g
         .attr("transform", `translate(0,${height - margin.bottom})`)
@@ -70,25 +40,25 @@ async function run() {
         .padding(0.1)
 
     y = d3.scaleLinear()
-        .domain([0, d3.max(data, d => d.total) * 1.2]).nice()
+        .domain([0, d3.max(data, d => d.confirmed) * 1.2]).nice()
         .range([height - margin.bottom, margin.top])
 
 
     // Draw chart
-    var svg = d3.select('#barchart')
+    var svg = d3.select(containerQuery)
         .append("svg")
         .attr('width', width)
         .attr('height', height)
 
-    // Draw total cases
+    // Draw confirmed cases
     svg.append("g")
         .attr("fill", color('active'))
         .selectAll("rect")
         .data(data)
         .join("rect")
         .attr("x", (d, i) => x(i))
-        .attr("y", d => y(d.total))
-        .attr("height", d => y(0) - y(d.total))
+        .attr("y", d => y(d.confirmed))
+        .attr("height", d => y(0) - y(d.confirmed))
         .attr("width", x.bandwidth());
 
     // Draw deaths
@@ -109,8 +79,8 @@ async function run() {
         .data(data)
         .join("rect")
         .attr("x", (d, i) => x(i))
-        .attr("y", d => y(d.death + d.recovered))
-        .attr("height", d => y(0) - y(d.recovered))
+        .attr("y", d => y(d.death + d.recover))
+        .attr("height", d => y(0) - y(d.recover))
         .attr("width", x.bandwidth());
 
     svg.append("g")
@@ -121,6 +91,7 @@ async function run() {
 
     svg.append("g")
         .call(g => legend({
+            color: color,
             g: g,
             x: 50,
             y: 50,
@@ -135,8 +106,6 @@ async function run() {
         .attr("y", 10)
         .attr("dy", "1em")
         .attr("font-size", "30")
-        .text('China, Mainland')
+        .text(title)
 
 }
-
-run()

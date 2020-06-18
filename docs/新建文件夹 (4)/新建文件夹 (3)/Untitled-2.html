@@ -1,0 +1,547 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>疫情数据实时轮播展示</title>
+	<link rel="stylesheet" href="../package/css/swiper.min.css">
+	<link rel="stylesheet" href="../package/bootstrap-4.5.0-dist/css/bootstrap.css">
+	<link rel="shortcut icon" href="..\img\logo.PNG"/><!--icon-->
+	<link rel="bookmark" href= "..\img\logo.PNG" /><!--icon-->
+<style>
+	.swiper-container {
+      width: 100%;
+      height: 100%;
+    }
+    .swiper-slide {
+      text-align: center;
+      font-size: 18px;
+
+      /* Center slide text vertically */
+    
+    }
+	.logo{
+  	background-image: url("IMG_2063.png");
+  	position: absolute;
+  	left: 39px;
+  	top: 5px;
+  	width: 149px;
+  	height: 137px;
+ 	 z-index: 161;		
+	}
+	.title{
+	font-size: 100px;
+  	font-family: "OPPOSans";
+  	color: rgb(255, 255, 255);
+  	font-weight: bold;
+  	line-height: 1.057;
+  	position: absolute;
+ 	left: 250px;
+ 	top: 19px;
+  	z-index: 4;		
+	}
+	.title_slogan{
+	font-size: 45px;
+  	font-family: "OPPOSans";
+  	color: rgb(255, 255, 255);
+  	font-weight: bold;
+  	line-height: 1.644;
+  	position: absolute;
+  	left: 862.922px;
+  	top: 0px;
+  	z-index: 162;		
+	}
+	.body-div{
+	border-radius: 15px;
+  	background-color: rgb(255, 255, 253);
+  	opacity: 0.71;
+  	box-shadow: 0px 9px 1.42px 0.58px rgba(0, 0, 0, 0.26);
+  	position: absolute;
+  	left: 10px;
+  	top: 140px;
+  	width: 1147px;
+  	height: 664px;
+  	z-index: 147;
+	}
+	.bottom-div{
+	border-radius: 15px;
+  	background-color: rgb(255, 255, 253);
+  	opacity: 0.71;
+  	box-shadow: 0px 9px 1.42px 0.58px rgba(0, 0, 0, 0.26);
+  	position: absolute;
+  	left: 11px;
+  	top: 910px;
+  	width: 1147px;
+  	height: 177px;
+  	z-index: 148;		
+	}
+	.bottom-div-title1{
+	font-size: 48px;
+  	font-family: "OPPOSans";
+  	color: rgb(12, 86, 71);	
+  	line-height: 3.104;
+  	position: absolute;
+  	left: 20px;
+  	top: -40px;
+ 	z-index: 150;		
+	}
+	.bottom-div-title2{
+	font-size: 48px;
+  	font-family: "OPPOSans";
+  	color: rgb(12, 86, 71);	
+  	line-height: 3.104;
+  	position: absolute;
+  	left: 420px;
+  	top: -40px;
+ 	z-index: 150;		
+	}
+	.bottom-div-title3{
+	font-size: 48px;
+  	font-family: "OPPOSans";
+  	color: rgb(12, 86, 71);	
+  	line-height: 3.104;
+  	position: absolute;
+  	left: 820px;
+  	top: -40px;
+ 	z-index: 150;		
+	}
+	.bottom-div-title4{
+	font-size: 30px;
+  	font-family: "OPPOSans";
+  	color: rgb(255, 174, 0);
+  	line-height: 2.483;
+  	position: absolute;
+  	left: 50px;
+  	top: 70px;
+  	z-index: 153;		
+	}
+	.bottom-div-title5{
+	font-size: 30px;
+  	font-family: "OPPOSans";
+  	color: rgb(255, 0, 0);
+  	line-height: 2.483;
+  	position: absolute;
+  	left: 450px;
+  	top: 70px;
+  	z-index: 153;		
+	}
+	.bottom-div-title6{
+	font-size: 30px;
+  	font-family: "OPPOSans";
+  	color: rgb(12, 86, 71);
+  	line-height: 2.483;
+  	position: absolute;
+  	left: 880px;
+  	top: 70px;
+  	z-index: 153;		
+	}
+	.right-left-title{
+	font-size: 31px;
+  	font-family: "OPPOSans";
+  	color: rgb(0, 110, 83);
+  	font-weight: bold;
+	}
+	</style>
+
+</head>
+
+<body style="background-color:#2a947f;">
+<div style="width: 61.8%; float: left;height: 1080px" >
+
+	<div name="logo" style="height: 15%"><!--logo行-->
+		<img alt="logo" src="..\img\logo.PNG" class="logo">
+		<p class="title">COVID-19</p>
+		<p class="title_slogan">疫情数据轮播<br>实时地图展示</p>	
+	</div>
+	<div name="rollerpage" style="height: 70%;background-color: #ffffff" class="body-div">
+	<!--轮播主体加js部分-->	
+	
+
+	
+	
+	
+	</div>
+	<div name="sumsUp" style="height: 15%;background-color:#ffffff" class="bottom-div">
+	<!--底部的大数据展示-->
+		<p class="bottom-div-title1">全球总感染数</p>
+		<p class="bottom-div-title2">全球总死亡数</p>
+		<p class="bottom-div-title3">全球总治愈数</p>
+		<p class="bottom-div-title4">XXXXXXXXXXX</p>
+		<p class="bottom-div-title5">XXXXXXXXXXX</p>
+		<p class="bottom-div-title6">xxxxxxxxxxx</p>
+	
+	</div>
+</div>
+<div style="width: 38.2% ;float: left;height: 1080px;padding: 0px">
+
+<!-- 该块用于展示感染人数最多的五个国家及其感染，死亡，治愈变化折线图-->
+	<div style="width: 49%;height: 1080px;float: left;padding: 5px" >
+	<div class="swiper-container" id="swipercontainer1" style="height: 1080px">
+		<div class="swiper-wrapper">
+		  <!--以下为例，name为flag的img标签用于安放国旗，其id应为所标志国家国际域名缩写+flag1 card-img-bottom处为安放变化图的占位，可替换为canvas，css仍然可用-->
+			  <div class="swiper-slide" >
+				<div class="card shadow-sm mb-3  " style="max-width: 540px;border-color: #009EA1;border-radius: 15px;opacity: 1" >
+				 <div class="row no-gutters">
+					<div class="col-md-4">
+					  <img src="..\img\Flags\us.svg"  name="flag" id="CNflag1" class="card-img" alt="..." style="border-radius: 50px;padding: 5px;">
+					</div>
+					<div class="col-md-8">
+					  <div class="card-body">
+						<p class="card-text small text-left" style="text-color:rgb(0,110,83);"> US： <text class="text-danger">感染人数：84603</text></p>
+					  </div>
+					</div>
+				 </div>
+				  <img class="card-img-bottom" src="https://static.runoob.com/images/mix/img_avatar.png" alt="Card image" style="height:125px;border-radius: 15px;border-bottom-left-radius: 15px;padding:5px;" >
+				</div>
+		 		</div>
+		 		
+		 		<div class="swiper-slide" >
+				<div class="card shadow-sm mb-3  " style="max-width: 540px;border-color: #009EA1;border-radius: 15px;">
+				 <div class="row no-gutters">
+					<div class="col-md-4">
+					  <img src="..\img\Flags\br.svg" class="card-img" alt="..." style="border-radius: 50px;padding: 5px;">
+					</div>
+					<div class="col-md-8">
+					  <div class="card-body">
+						<p class="card-text small text-left" >BR： <text class="text-danger">感染人数：84603</text></p>
+					  </div>
+					</div>
+				 </div>
+				  <img class="card-img-bottom" src="https://static.runoob.com/images/mix/img_avatar.png" alt="Card image" style="height:125px;border-radius: 15px;border-bottom-left-radius: 15px;padding:5px;">
+				</div>
+		 		</div>
+		 		
+		 		<div class="swiper-slide" >
+				<div class="card shadow-sm mb-3  " style="max-width: 540px;border-color: #009EA1;border-radius: 15px;">
+				 <div class="row no-gutters">
+					<div class="col-md-4">
+					  <img src="..\img\Flags\cn.svg" class="card-img" alt="..." style="border-radius: 50px;padding: 5px;">
+					</div>
+					<div class="col-md-8">
+					  <div class="card-body">
+						<p class="card-text small text-left">中国： <text class="text-danger">感染人数：84603</text></p>
+					  </div>
+					</div>
+				 </div>
+				  <img class="card-img-bottom" src="https://static.runoob.com/images/mix/img_avatar.png" alt="Card image" style="height:125px;border-radius: 15px;border-bottom-left-radius: 15px;padding:5px;">
+				</div>
+		 		</div>
+		 		
+		 		<div class="swiper-slide" >
+				<div class="card shadow-sm mb-3  " style="max-width: 540px;border-color: #009EA1;border-radius: 15px">
+				 <div class="row no-gutters">
+					<div class="col-md-4">
+					  <img src="..\img\Flags\np.svg" class="card-img" alt="..." style="border-radius: 50px;padding: 5px;">
+					</div>
+					<div class="col-md-8">
+					  <div class="card-body">
+						<p class="card-text small text-left">中国： <text class="text-danger">感染人数：84603</text></p>
+					  </div>
+					</div>
+				 </div>
+				  <img class="card-img-bottom" src="https://static.runoob.com/images/mix/img_avatar.png" alt="Card image" style="height:125px;border-radius: 15px;border-bottom-left-radius: 15px;padding:5px;">
+				</div>
+		 		</div>
+		 		
+		 		<div class="swiper-slide" >
+				<div class="card shadow-sm mb-3  " style="max-width: 540px;border-color: #009EA1;border-radius: 15px;">
+				 <div class="row no-gutters">
+					<div class="col-md-4">
+					  <img src="..\img\Flags\ch.svg" class="card-img" alt="..." style="border-radius: 50px;padding: 5px;">
+					</div>
+					<div class="col-md-8">
+					  <div class="card-body">
+						<p class="card-text small text-left">中国： <text class="text-danger">感染人数：84603</text></p>
+					  </div>
+					</div>
+				 </div>
+				  <img class="card-img-bottom" src="https://static.runoob.com/images/mix/img_avatar.png" alt="Card image" style="height:125px;border-radius: 15px;border-bottom-left-radius: 15px;padding:5px;">
+				</div>
+		 		</div>
+		 		
+
+		 		
+		 		
+		</div>
+	</div>
+	</div>
+	<div style="width: 49%;height: 1080px;float: left;padding: 10px" >
+		<div class="swiper-container" id="swipercontainer2" style="height: 1080px">
+		<div class="swiper-wrapper">
+		  <div class="swiper-slide" >
+			<div class="card shadow-sm mb-3  " style="max-width: 540px;border-color: #009EA1;border-radius: 15px">
+			 <div class="row no-gutters">
+				<div class="col-md-4">
+				  <img src="..\img\Flags\ch.svg" class="card-img1" alt="..."style="padding: 5px;">
+				</div>
+				<div class="col-md-8">
+				  <div class="card-body">
+					<p class="card-text small text-left">中国： <text class="text-danger">感染人数：84603</text></p>
+				  </div>
+				</div>
+			 </div>
+			</div>
+		 </div>
+			
+		 <div class="swiper-slide" >
+			<div class="card shadow-sm mb-3  " style="max-width: 540px;border-color: #009EA1;border-radius: 15px">
+			 <div class="row no-gutters">
+				<div class="col-md-4">
+				  <img src="..\img\Flags\ch.svg" class="card-img1" alt="..." style="padding: 5px;">
+				</div>
+				<div class="col-md-8">
+				  <div class="card-body">
+					<p class="card-text small text-left">中国： <text class="text-danger">感染人数：84603</text></p>
+				  </div>
+				</div>
+			 </div>
+			</div>
+		 </div>
+		 <div class="swiper-slide" >
+			<div class="card shadow-sm mb-3  " style="max-width: 540px;border-color: #009EA1;border-radius: 15px">
+			 <div class="row no-gutters">
+				<div class="col-md-4">
+				  <img src="..\img\Flags\ch.svg" class="card-img1" alt="..." style="padding: 5px;">
+				</div>
+				<div class="col-md-8">
+				  <div class="card-body" >
+					<p class="card-text small text-left" > 中国： <text class="text-danger">感染人数：84603</text></p>
+				  </div>
+				</div>
+			 </div>
+			</div>
+		 </div>
+		 <div class="swiper-slide" >
+			<div class="card shadow-sm mb-3  " style="max-width: 540px;border-color: #009EA1;border-radius: 15px">
+			 <div class="row no-gutters">
+				<div class="col-md-4">
+				  <img src="..\img\Flags\ch.svg" class="card-img1" alt="..." style="padding: 5px;">
+				</div>
+				<div class="col-md-8">
+				  <div class="card-body">
+					<p class="card-text small text-left">中国： <text class="text-danger">感染人数：84603</text></p>
+				  </div>
+				</div>
+			 </div>
+			</div>
+		 </div>
+		 <div class="swiper-slide" >
+			<div class="card shadow-sm mb-3  " style="max-width: 540px;border-color: #009EA1;border-radius: 15px">
+			 <div class="row no-gutters">
+				<div class="col-md-4">
+				  <img src="..\img\Flags\ch.svg" class="card-img1" alt="..." style="padding: 5px;">
+				</div>
+				<div class="col-md-8">
+				  <div class="card-body">
+					<p class="card-text small text-left">中国： <text class="text-danger">感染人数：84603</text></p>
+				  </div>
+				</div>
+			 </div>
+			</div>
+		 </div>
+		 <div class="swiper-slide" >
+			<div class="card shadow-sm mb-3  " style="max-width: 540px;border-color: #009EA1;border-radius: 15px">
+			 <div class="row no-gutters">
+				<div class="col-md-4">
+				  <img src="..\img\Flags\ch.svg" class="card-img1" alt="..." style="padding: 5px;">
+				</div>
+				<div class="col-md-8">
+				  <div class="card-body">
+					<p class="card-text small text-left">中国： <text class="text-danger">感染人数：84603</text></p>
+				  </div>
+				</div>
+			 </div>
+			</div>
+		 </div>
+		 <div class="swiper-slide" >
+			<div class="card shadow-sm mb-3  " style="max-width: 540px;border-color: #009EA1;border-radius: 15px">
+			 <div class="row no-gutters">
+				<div class="col-md-4">
+				  <img src="..\img\Flags\ch.svg" class="card-img1" alt="..." style="padding: 5px;">
+				</div>
+				<div class="col-md-8">
+				  <div class="card-body">
+					<p class="card-text small text-left">中国： <text class="text-danger">感染人数：84603</text></p>
+				  </div>
+				</div>
+			 </div>
+			</div>
+		 </div>
+		 <div class="swiper-slide" >
+			<div class="card shadow-sm mb-3  " style="max-width: 540px;border-color: #009EA1;border-radius: 15px">
+			 <div class="row no-gutters">
+				<div class="col-md-4">
+				  <img src="..\img\Flags\ch.svg" class="card-img1" alt="..." style="padding: 5px;">
+				</div>
+				<div class="col-md-8">
+				  <div class="card-body">
+					<p class="card-text small text-left">中国： <text class="text-danger">感染人数：84603</text></p>
+				  </div>
+				</div>
+			 </div>
+			</div>
+		 </div>
+		 <div class="swiper-slide" >
+			<div class="card shadow-sm mb-3  " style="max-width: 540px;border-color: #009EA1;border-radius: 15px">
+			 <div class="row no-gutters">
+				<div class="col-md-4">
+				  <img src="..\img\Flags\ch.svg" class="card-img1" alt="..." style="padding: 5px;">
+				</div>
+				<div class="col-md-8">
+				  <div class="card-body">
+					<p class="card-text small text-left">中国： <text class="text-danger">感染人数：84603</text></p>
+				  </div>
+				</div>
+			 </div>
+			</div>
+		 </div>
+		 <div class="swiper-slide" >
+			<div class="card shadow-sm mb-3  " style="max-width: 540px;border-color: #009EA1;border-radius: 15px">
+			 <div class="row no-gutters">
+				<div class="col-md-4">
+				  <img src="..\img\Flags\ch.svg" class="card-img1" alt="..." style="padding: 5px;">
+				</div>
+				<div class="col-md-8">
+				  <div class="card-body">
+					<p class="card-text small text-left">中国： <text class="text-danger">感染人数：84603</text></p>
+				  </div>
+				</div>
+			 </div>
+			</div>
+		 </div>
+		 <div class="swiper-slide" >
+			<div class="card shadow-sm mb-3  " style="max-width: 540px;border-color: #009EA1;border-radius: 15px">
+			 <div class="row no-gutters">
+				<div class="col-md-4">
+				  <img src="..\img\Flags\ch.svg" class="card-img1" alt="..." style="padding: 5px;">
+				</div>
+				<div class="col-md-8">
+				  <div class="card-body">
+					<p class="card-text small text-left">中国： <text class="text-danger">感染人数：84603</text></p>
+				  </div>
+				</div>
+			 </div>
+			</div>
+		 </div>
+		 <div class="swiper-slide" >
+			<div class="card shadow-sm mb-3  " style="max-width: 540px;border-color: #009EA1;border-radius: 15px">
+			 <div class="row no-gutters">
+				<div class="col-md-4">
+				  <img src="..\img\Flags\ch.svg" class="card-img1" alt="..." style="padding: 5px;">
+				</div>
+				<div class="col-md-8">
+				  <div class="card-body">
+					<p class="card-text small text-left">中国： <text class="text-danger">感染人数：84603</text></p>
+				  </div>
+				</div>
+			 </div>
+			</div>
+		 </div>
+		 <div class="swiper-slide" >
+			<div class="card shadow-sm mb-3  " style="max-width: 540px;border-color: #009EA1;border-radius: 15px">
+			 <div class="row no-gutters">
+				<div class="col-md-4">
+				  <img src="..\img\Flags\ch.svg" class="card-img1" alt="..." style="padding: 5px;">
+				</div>
+				<div class="col-md-8">
+				  <div class="card-body">
+					<p class="card-text small text-left">中国： <text class="text-danger">感染人数：84603</text></p>
+				  </div>
+				</div>
+			 </div>
+			</div>
+		 </div>
+		 <div class="swiper-slide" >
+			<div class="card shadow-sm mb-3  " style="max-width: 540px;border-color: #009EA1;border-radius: 15px">
+			 <div class="row no-gutters">
+				<div class="col-md-4">
+				  <img src="..\img\Flags\ch.svg" class="card-img1" alt="..." style="padding: 5px;">
+				</div>
+				<div class="col-md-8">
+				  <div class="card-body">
+					<p class="card-text small text-left">中国： <text class="text-danger">感染人数：84603</text></p>
+				  </div>
+				</div>
+			 </div>
+			</div>
+		 </div>
+		 <div class="swiper-slide" >
+			<div class="card shadow-sm mb-3  " style="max-width: 540px;border-color: #009EA1;border-radius: 15px">
+			 <div class="row no-gutters">
+				<div class="col-md-4">
+				  <img src="..\img\Flags\ch.svg" class="card-img1" alt="..." style="padding: 5px;">
+				</div>
+				<div class="col-md-8">
+				  <div class="card-body">
+					<p class="card-text small text-left">中国： <text class="text-danger">感染人数：84603</text></p>
+				  </div>
+				</div>
+			 </div>
+			</div>
+		 </div>
+		 <div class="swiper-slide" >
+			<div class="card shadow-sm mb-3  " style="max-width: 540px;border-color: #009EA1;border-radius: 15px">
+			 <div class="row no-gutters">
+				<div class="col-md-4">
+				  <img src="..\img\Flags\ch.svg" class="card-img1" alt="..." style="padding: 5px;">
+				</div>
+				<div class="col-md-8">
+				  <div class="card-body">
+					<p class="card-text small text-left">中国： <text class="text-danger">感染人数：84603</text></p>
+				  </div>
+				</div>
+			 </div>
+			</div>
+		 </div>
+		 <div class="swiper-slide" >
+			<div class="card shadow-sm mb-3  " style="max-width: 540px;border-color: #009EA1;border-radius: 15px">
+			 <div class="row no-gutters">
+				<div class="col-md-4">
+				  <img src="..\img\Flags\ch.svg" class="card-img1" alt="..." style="padding: 5px;">
+				</div>
+				<div class="col-md-8">
+				  <div class="card-body">
+					<p class="card-text small text-left">中国： <text class="text-danger">感染人数：84603</text></p>
+				  </div>
+				</div>
+			 </div>
+			</div>
+		 </div>
+		</div>
+		</div>
+	</div>
+</div>
+  <script src="../package/bootstrap-4.5.0-dist/js/bootstrap.js"></script>
+  <!-- Swiper JS -->
+  <script src="../package/js/swiper.min.js"></script>
+
+  <!-- Initialize Swiper -->
+  <script>
+    var swiper = new Swiper('#swipercontainer2', {
+      direction: 'vertical',
+	  slidesPerView: 15,
+      spaceBetween: 5,
+	 loop: true,
+	  autoplay: {
+        delay: 1000,
+        disableOnInteraction: false,
+      },
+      pagination: {
+        el: '.swiper-pagination',
+        clickable: true,
+      },
+    });
+	  var swiper = new Swiper('#swipercontainer1', {
+      direction: 'vertical',
+	  slidesPerView: 5,
+      spaceBetween: 20,
+	 
+      pagination: {
+        el: '.swiper-pagination',
+        clickable: true,
+      },
+    });
+	  
+  </script>
+
+</body>
+</html>
