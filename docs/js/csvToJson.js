@@ -1,5 +1,5 @@
 function formateMonth(value){
-	if(value.length === 1)return '0'+value;
+	if(value<10)return '0'+value;
 	return value;
 }
 //数据源得翻墙
