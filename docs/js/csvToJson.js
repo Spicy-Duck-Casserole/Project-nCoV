@@ -1,11 +1,14 @@
+async function formateMonth(value){
+	if(value.length === 1)return '0'+value;
+	return value;
+}
 //数据源得翻墙
 //动态生成URL
 async function nowDay(){
 	var newDate = new Date();
-	var Sample = 'https://raw.githubusercontent.com/CSSEGISandData/COVID-19/master/csse_covid_19_data/csse_covid_19_daily_reports/06-'+(newDate.getDate()-2)+'-2020.csv';
+	var Sample = 'https://raw.githubusercontent.com/CSSEGISandData/COVID-19/master/csse_covid_19_data/csse_covid_19_daily_reports/'+ await formateMonth(newDate.getMonth())+'-'+(newDate.getDate()-2)+'-'+newDate.getFullYear()+'.csv';
 	var ISO = 'https://raw.githubusercontent.com/CSSEGISandData/COVID-19/master/csse_covid_19_data/UID_ISO_FIPS_LookUp_Table.csv';
 	var json = [];
-	var findISO;
 	var Country = new Array();
 	var ISOData = new Array();
 
