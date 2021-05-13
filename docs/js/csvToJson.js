@@ -64,7 +64,7 @@ async function nowDay(){
 	function getIso2(value){
 		for(var i = 0; i<ISOData.length;i++){
 			if(value === ISOData[i].Country_Region){
-				return ISOData[i].iso2;
+				return ISOData[i].iso2.toLowerCase();
 			}
 		}
 		return 'unknown';
