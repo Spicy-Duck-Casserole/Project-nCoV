@@ -1,12 +1,15 @@
 function formateMonth(value){
-	if(value<10)return '0'+value;
+	if(value+1<10){
+		var trueValue = value + 1;
+		return '0'+trueValue;
+	}
 	return value;
 }
 //数据源得翻墙
 //动态生成URL
 async function nowDay(){
 	var newDate = new Date();
-	var Sample = 'https://raw.githubusercontent.com/CSSEGISandData/COVID-19/master/csse_covid_19_data/csse_covid_19_daily_reports/'+ formateMonth(newDate.getMonth()+1)+'-'+(newDate.getDate()-2)+'-'+newDate.getFullYear()+'.csv';
+	var Sample = 'https://raw.githubusercontent.com/CSSEGISandData/COVID-19/master/csse_covid_19_data/csse_covid_19_daily_reports/'+ formateMonth(newDate.getMonth())+'-'+(newDate.getDate()-2)+'-'+newDate.getFullYear()+'.csv';
 	var ISO = 'https://raw.githubusercontent.com/CSSEGISandData/COVID-19/master/csse_covid_19_data/UID_ISO_FIPS_LookUp_Table.csv';
 	var json = [];
 	var Country = new Array();
