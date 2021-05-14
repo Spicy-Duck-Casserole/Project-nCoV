@@ -82,7 +82,7 @@ async function nowDay(){
 
 async function global(){
 	var newDate = new Date();
-	var Sample = 'https://raw.githubusercontent.com/CSSEGISandData/COVID-19/master/csse_covid_19_data/csse_covid_19_daily_reports/06-'+(newDate.getDate()-2)+'-2020.csv';
+	var Sample = 'https://raw.githubusercontent.com/CSSEGISandData/COVID-19/master/csse_covid_19_data/csse_covid_19_daily_reports/'+ formateMonth(newDate.getMonth())+'-'+(newDate.getDate()-2)+'-'+newDate.getFullYear()+'.csv';
 	var json = [];
 	var csvdata = await d3.csv(Sample);
 	for(var i = 0;i < csvdata.length;i++){
