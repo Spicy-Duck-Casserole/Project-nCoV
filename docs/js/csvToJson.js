@@ -1,15 +1,48 @@
 function formateMonth(value){
-	if(value+1<10){
-		var trueValue = value + 1;
-		return '0'+trueValue;
+	if(value<10){
+		return '0'+Value;
 	}
 	return value;
 }
+
+function is_thirty(value){
+	if(value == 2||value == 4||value == 6||value == 9||value == 11)return true;
+	return false;
+}
+function getCorrectNewlyDate(){
+	var newDate = new Date();
+	var expectedDate = newDate.getDate();
+	var expectedMonth = newDate.getMonth()+1;
+	var expectedYear = newDate.getFullYear();
+	if(expectedDate-2<=0){
+		if(expectedMonth==1){// 1
+			expectedYear = expectedYear - 1;
+			expectedMonth = 12;
+			expectedDate = 31+(expectedDate-2);//31 30
+		}
+		else if(is_thirty(expectedMonth)){//2 4 6 9 11
+			expectedMonth--;
+			expectedDate = 31+(expectedDate-2);//31 30
+		}
+		else if(expectedMonth == 3){//3
+			expectedMonth--;
+			if(expectedYear%4==0&&(expectedYear%100!=0 || expectedYear%400 == 0))expectedDate = 29+(expectedDate-2);
+			else expectedDate = 28+(expectedDate-2);
+		}
+		else{//5 7 8 10 12
+			expectedMonth--;
+			expectedDate = 30+(expectedDate-2);
+		}
+	}
+	else expectedDate-=2;
+	return formateMonth(expectedMonth)+'-'+expectedDate+'-'+expectedYear;
+}
+
 //数据源得翻墙
 //动态生成URL
 async function nowDay(){
-	var newDate = new Date();
-	var Sample = 'https://raw.githubusercontent.com/CSSEGISandData/COVID-19/master/csse_covid_19_data/csse_covid_19_daily_reports/'+ formateMonth(newDate.getMonth())+'-'+(newDate.getDate()-2)+'-'+newDate.getFullYear()+'.csv';
+	var dateName = getCorrectNewlyDate();
+	var Sample = 'https://raw.githubusercontent.com/CSSEGISandData/COVID-19/master/csse_covid_19_data/csse_covid_19_daily_reports/'+ dateName +'.csv';
 	var ISO = 'https://raw.githubusercontent.com/CSSEGISandData/COVID-19/master/csse_covid_19_data/UID_ISO_FIPS_LookUp_Table.csv';
 	var json = [];
 	var Country = new Array();
@@ -81,8 +114,8 @@ async function nowDay(){
 }
 
 async function global(){
-	var newDate = new Date();
-	var Sample = 'https://raw.githubusercontent.com/CSSEGISandData/COVID-19/master/csse_covid_19_data/csse_covid_19_daily_reports/'+ formateMonth(newDate.getMonth())+'-'+(newDate.getDate()-2)+'-'+newDate.getFullYear()+'.csv';
+	var dateName = getCorrectNewlyDate();
+	var Sample = 'https://raw.githubusercontent.com/CSSEGISandData/COVID-19/master/csse_covid_19_data/csse_covid_19_daily_reports/'+ dateName +'.csv';
 	var json = [];
 	var csvdata = await d3.csv(Sample);
 	for(var i = 0;i < csvdata.length;i++){
