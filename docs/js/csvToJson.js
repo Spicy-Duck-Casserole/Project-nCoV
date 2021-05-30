@@ -1,6 +1,6 @@
 function formateMonth(value){
 	if(value<10){
-		return '0'+Value;
+		return '0'+value;
 	}
 	return value;
 }
