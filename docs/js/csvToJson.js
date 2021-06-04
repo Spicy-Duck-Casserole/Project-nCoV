@@ -1,4 +1,4 @@
-function formateMonth(value){
+function formateNum(value){
 	if(value<10){
 		return '0'+value;
 	}
@@ -35,7 +35,7 @@ function getCorrectNewlyDate(){
 		}
 	}
 	else expectedDate-=2;
-	return formateMonth(expectedMonth)+'-'+expectedDate+'-'+expectedYear;
+	return formateNum(expectedMonth)+'-'+formateNum(expectedDate)+'-'+expectedYear;
 }
 
 //数据源得翻墙
